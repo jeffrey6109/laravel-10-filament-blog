@@ -19,7 +19,9 @@ class Post extends Model
         'body',
         'user_id',
         'active',
-        'published_at'
+        'published_at',
+        'meta_title',
+        'meta_description',
     ];
 
     protected $casts = [

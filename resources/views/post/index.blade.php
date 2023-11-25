@@ -2,7 +2,7 @@
     /** @var $posts \Illuminate\Pagination\LengthAwarePaginator */
 ?>
 
-<x-app-layout meta-title="{{ \App\Models\TextWidget::gettitle('title-widget') }} - Home">
+<x-app-layout meta-title="{{ \App\Models\TextWidget::gettitle('title-widget') }} - Posts by category - {{ $category->title }}">
         <!-- Posts Section -->
     <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 
