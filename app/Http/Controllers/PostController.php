@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Carbon\Carbon;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostController extends Controller
 {
@@ -44,7 +45,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        if (!$post->active || $post->published_at > Carbon::now()) {
+            throw new NotFoundHttpException();
+        }
+
+        return view('post.view', compact('post'));
     }
 
     /**
