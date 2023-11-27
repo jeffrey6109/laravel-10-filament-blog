@@ -20,7 +20,7 @@ return new class extends Migration
             $table->longText('body');
             $table->boolean('active');
             $table->datetime('published_at')->nullable();
-            $table->foreignIdFor(User::class, 'user_id');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
