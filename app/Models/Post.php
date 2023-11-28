@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -38,9 +39,14 @@ class Post extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function shortBody(): string
+    public function shortTitle($words = 30): string
     {
-        return Str::words(strip_tags($this->body, 30));
+        return Str::words(strip_tags($this->title, $words));
+    }
+
+    public function shortBody($words = 10): string
+    {
+        return Str::words(strip_tags($this->body, $words));
     }
 
     public function getFormattedDate()
@@ -54,5 +60,17 @@ class Post extends Model
             return $this->thumbnail;
         }
         return '/storage/'. $this->thumbnail;
+    }
+
+    public function humanReadTime(): Attribute
+    {
+        return new Attribute(
+            get: function($value, $attributes) {
+                $words = Str::wordCount(strip_tags($attributes['body']));
+                $minutes = ceil($words / 200);
+
+                return $minutes. ' '.str('min')->plural($minutes) . ', ' . $words. ' '. str('words')->plural($words);
+            }
+        );
     }
 }

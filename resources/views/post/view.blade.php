@@ -11,7 +11,7 @@
                 <div class="bg-white flex flex-col justify-start p-6">
                     <div class="flex gap-4">
                         @foreach ($post->categories as $category)
-                            <a href="#" class="bg-blue-700 text-white rounded text-sm font-bold uppercase py-1 px-3">
+                            <a href="{{ route('by-category', $category) }}" class="bg-blue-700 text-white hover:bg-white hover:text-blue-700 rounded text-sm font-bold uppercase py-1 px-3">
                                 {{ $category->title }}
                             </a>
                         @endforeach
@@ -20,7 +20,7 @@
                         {{ $post->title }}
                     </h1>
                     <p href="#" class="text-sm pb-8">
-                        By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->user->name }}</a>, Published on {{ $post->getFormattedDate() }}
+                        By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->user->name }}</a>, Published on {{ $post->getFormattedDate() }} | {{ $post->human_read_time }}
                     </p>
                     <div>
                         {!! $post->body !!}
