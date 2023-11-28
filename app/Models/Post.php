@@ -26,7 +26,7 @@ class Post extends Model
     ];
 
     protected $casts = [
-        'published_at' => 'datetime'
+        'published_at' => 'datetime',
     ];
 
     public function user(): BelongsTo
@@ -59,17 +59,18 @@ class Post extends Model
         if (str_starts_with($this->thumbnail, 'http')) {
             return $this->thumbnail;
         }
-        return '/storage/'. $this->thumbnail;
+
+        return '/storage/'.$this->thumbnail;
     }
 
     public function humanReadTime(): Attribute
     {
         return new Attribute(
-            get: function($value, $attributes) {
+            get: function ($value, $attributes) {
                 $words = Str::wordCount(strip_tags($attributes['body']));
                 $minutes = ceil($words / 200);
 
-                return $minutes. ' '.str('min')->plural($minutes) . ', ' . $words. ' '. str('words')->plural($words);
+                return $minutes.' '.str('min')->plural($minutes).', '.$words.' '.str('words')->plural($words);
             }
         );
     }

@@ -2,8 +2,8 @@
 
 namespace App\View\Components;
 
-use Closure;
 use App\Models\Post;
+use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 

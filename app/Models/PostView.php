@@ -13,6 +13,6 @@ class PostView extends Model
         'ip_address',
         'user_agent',
         'post_id',
-        'user_id'
+        'user_id',
     ];
 }

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostOverview extends Widget
 {
-    protected int | string | array $columnSpan = 3;
+    protected int|string|array $columnSpan = 3;
 
     public ?Model $record = null;
 
@@ -21,7 +21,6 @@ class PostOverview extends Widget
             'downvotes' => UpvoteDownvote::where('post_id', '=', $this->record->id)->where('is_upvote', '=', false)->count(),
         ];
     }
-
 
     protected static string $view = 'filament.widgets.post-overview';
 }

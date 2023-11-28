@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TextWidgetResource\Pages;
-use App\Filament\Resources\TextWidgetResource\RelationManagers;
 use App\Models\TextWidget;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -11,8 +10,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TextWidgetResource extends Resource
 {
@@ -26,20 +23,20 @@ class TextWidgetResource extends Resource
     {
         return $form
             ->schema([
-                    Section::make([
-                        Forms\Components\TextInput::make('key')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\FileUpload::make('image')
-                            ->image(),
-                        Forms\Components\TextInput::make('title')
-                            ->required()
-                            ->maxLength(2048),
-                        Forms\Components\RichEditor::make('content')
-                            ->columnSpanFull(),
-                        Forms\Components\Toggle::make('active')
-                            ->required(),
-                    ])->columns(1)
+                Section::make([
+                    Forms\Components\TextInput::make('key')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\FileUpload::make('image')
+                        ->image(),
+                    Forms\Components\TextInput::make('title')
+                        ->required()
+                        ->maxLength(2048),
+                    Forms\Components\RichEditor::make('content')
+                        ->columnSpanFull(),
+                    Forms\Components\Toggle::make('active')
+                        ->required(),
+                ])->columns(1),
             ]);
     }
 

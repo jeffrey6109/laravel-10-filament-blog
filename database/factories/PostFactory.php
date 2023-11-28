@@ -18,8 +18,9 @@ class PostFactory extends Factory
     public function definition(): array
     {
         $title = fake()->realText(50);
+
         return [
-            'title' =>  $title,
+            'title' => $title,
             'slug' => Str::slug($title),
             'thumbnail' => fake()->imageUrl,
             'body' => fake()->realText(5000),
