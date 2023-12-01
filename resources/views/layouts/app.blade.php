@@ -56,7 +56,15 @@
                     <a href="{{ route('about-us') }}" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">About Us</a>
                 </div>
 
-                <div>
+                <div class="flex items-center">
+                    <div class="mx-auto max-w-6xl p-3">
+                        <form method="get" action="{{ route('search') }}">
+                            <input placeholder="Type and hit enter to search anything" name="search" value="{{ request()->get('search') }}"
+                            class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset
+                            ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600
+                            sm:text-sm sm:leading-6 font-medium">
+                        </form>
+                    </div>
                     @auth
                         <div class="flex sm:items-center sm:ms-6">
                             <x-dropdown align="right" width="48">
@@ -100,7 +108,7 @@
     </nav>
 
 
-    <div class="container mx-auto flex flex-wrap py-6">
+    <div class="container mx-auto py-6">
 
         {{ $slot }}
 

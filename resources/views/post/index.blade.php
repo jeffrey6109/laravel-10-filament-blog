@@ -3,18 +3,26 @@
 ?>
 
 <x-app-layout meta-title="{{ \App\Models\TextWidget::gettitle('title-widget') }} - Posts by category - {{ $category->title }}">
+
+    <div class="container mx-auto flex flex-wrap py-6">
         <!-- Posts Section -->
-    <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+        <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 
-        @foreach ($posts as $post)
-            <x-post-item :post="$post"></x-post-item>
-        @endforeach
+            <div class=" flex flex-col items-center">
 
-        {{ $posts->onEachSide(1)->links() }}
+                @foreach ($posts as $post)
+                    <x-post-item :post="$post" />
+                @endforeach
 
-    </section>
+            </div>
 
-    <x-sidebar />
+            {{ $posts->onEachSide(1)->links() }}
+
+        </section>
+
+        <x-sidebar />
+
+    </div>
 
 </x-app-layout>
 

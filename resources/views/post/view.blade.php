@@ -1,6 +1,8 @@
 <x-app-layout :meta-title="$post->meta_title ?: $post->title" :meta-description="$post->meta_description">
 
-        <!-- Post Section -->
+    <div class="flex">
+
+            <!-- Post Section -->
         <section class="w-full md:w-2/3 flex flex-col px-3">
 
             <article class="flex flex-col shadow my-4">
@@ -60,4 +62,7 @@
         </section>
 
         <x-sidebar />
+
+    </div>
+
 </x-app-layout>
